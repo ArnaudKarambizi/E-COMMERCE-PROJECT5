@@ -1,5 +1,5 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink} from "react-router-dom";
 
 export default function Header(props) {
     return (
@@ -21,6 +21,21 @@ export default function Header(props) {
                             Contact Us
                         </NavLink>
                     </li>
+                    
+			{props.currentUser ? (
+					<li>
+					 
+						<NavLink to="/logout" activeClassName="selected">Log Out</NavLink>
+					</li>
+				)
+				: (
+					<li>
+                        <NavLink to="/login" activeClassName="selected"><span class='login'>Log In</span></NavLink>
+						<NavLink to="/signup" activeClassName="selected">Sign Up</NavLink>
+					</li>
+				)
+			}
+
                 </ul>
                 <form className="header-search" onSubmit={props.onSubmit}>
                     <input

@@ -1,6 +1,8 @@
 const express = require('express');
 const mongoose = require('mongoose'); //you can use mongo db drive
 mongoose.set('useFindAndModify', false); //for put products routes
+const usersRoutes = require('./routes')
+
 // ────────────────────────────────────────────────────────────────────────────────
 //allows us to take requests and get data from the body when we send the post request
 // ────────────────────────────────────────────────────────────────────────────────
@@ -26,6 +28,7 @@ app.get('/', (req, res) => res.send('hello'));
 // ────────────────────────────────────────────────────────────────────────────────
 
 app.use(bodyParser.json());
+// app.use(logger('dev'));
 
 app.use(
   bodyParser.urlencoded({
@@ -65,6 +68,20 @@ mongoose
 
 app.use('/products', products);
 
+app.use(express.static(`${__dirname}/client/build`))
+// app.use(logger('dev'))
+app.use(express.json())
+app.use(express.urlencoded({ extended: true }));
+
+app.get('/api', (req, res) => {
+	res.json({message: "API root"})
+})
+
+app.use('/api/users', usersRoutes)
+
+app.use('*', (req, res) => {
+	res.sendFile(`${__dirname}/client/build/index.html`)
+})
 // ────────────────────────────────────────────────────────────────────────────────
 // we need to be able to run our server
 //When deployed TO HEROKU OR PORT 5000

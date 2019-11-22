@@ -44,6 +44,11 @@ ul {
 /* =========================
              HEADER 
   ============================*/
+  .login{
+      display: inline-block;
+      margin-right:30px
+
+  }
 
 .header {
     background-color: rgba(0, 0, 0, 0.794);

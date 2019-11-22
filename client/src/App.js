@@ -6,93 +6,151 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import ContactPage from "./components/ContactPage/ContactPage";
 import ProductPage from "./components/ProductPage/ProductPage";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route,Redirect } from "react-router-dom";
+import LogOut from "./components/LogOut";
+import LogIn from "./components/LogIn";
+import SignUp from "./components/SignUp";
+import httpClient from './components/httpClient'
+
 
 export default class App extends Component {
-    /* Initializing state  with an empty furnitures array 
+  /* Initializing state  with an empty furnitures array 
     this will filled with  products data in the backend*/
 
-    state = {
-        selectValue: "default",
-        inputValue: "",
-        furnituresArray: [],
-        furnitures: []
-    };
+  state = {
+    selectValue: "default",
+    inputValue: "",
+    furnituresArray: [],
+    furnitures: [],
+    currentUser: httpClient.getCurrentUser()
+  };
 
-    //Fetching data from the node server
+  //Fetching data from the node server
 
-    componentDidMount() {
-        this.getProducts();
-    }
+  componentDidMount() {
+    this.getProducts();
+  }
 
-    getProducts = () => {
-        fetch(`/products`)
-            .then(response => {
-                return response.json();
-            })
-            .then(data => {
-                this.setState({
-                    furnituresArray: data,
-                    furnitures: data
-                });
-            });
-    };
-
-    // UPDATING STATE
-
-    selectFilter = e => {
+  getProducts = () => {
+    fetch(`/products`)
+      .then(response => {
+        return response.json();
+      })
+      .then(data => {
         this.setState({
-            selectValue: e.target.value
+          furnituresArray: data,
+          furnitures: data
         });
-    };
+      });
+  };
 
-    searchOnChange = e => {
-        this.setState({
-            inputValue: e.target.value
-        });
-    };
+  // UPDATING STATE
 
-    onSubmit = e => {
-        e.preventDefault();
-        let filterLink = `products/productFilter/${this.state.inputValue}`;
-        fetch(filterLink)
-            .then(response => {
-                return response.json();
-            })
-            .then(data => {
-                if (data.length > 0) {
-                    this.setState({
-                        furnituresArray: data
-                    });
-                }
-            });
-    };
+  selectFilter = e => {
+    this.setState({
+      selectValue: e.target.value
+    });
+  };
 
-    render() {
-        return (
-            <Router>
-                <Header
-                    onSubmit={this.onSubmit}
-                    searchOnChange={this.searchOnChange}
+  searchOnChange = e => {
+    this.setState({
+      inputValue: e.target.value
+    });
+  };
+
+  onSubmit = e => {
+    e.preventDefault();
+    let filterLink = `products/productFilter/${this.state.inputValue}`;
+    fetch(filterLink)
+      .then(response => {
+        return response.json();
+      })
+      .then(data => {
+        if (data.length > 0) {
+          this.setState({
+            furnituresArray: data
+          });
+        }
+      });
+  };
+
+  onLoginSuccess(user) {
+    this.setState({ currentUser: httpClient.getCurrentUser() });
+  }
+
+  logOut() {
+    httpClient.logOut();
+    this.setState({ currentUser: null });
+  }
+
+  render() {
+    const { currentUser } = this.state;
+    return (
+      <div>
+
+        <Router>
+          <Header
+            onSubmit={this.onSubmit}
+            searchOnChange={this.searchOnChange}
+            currentUser={currentUser}
+          />
+          <main className="main">
+            <Route path="/" exact component={Homepage} />
+            <Route path="/contact" component={ContactPage} />
+            <Route
+              path="/products"
+              component={() => (
+                <ProductPage
+                  // ******* passing state in  productPage component as props ***
+                  furnituresArray={this.state.furnituresArray}
+                  selectValue={this.state.selectValue}
+                  selectFilter={this.selectFilter}
+                  getProducts={this.getProducts}
                 />
-                <main className="main">
-                    <Route path="/" exact component={Homepage} />
-                    <Route path="/contact" component={ContactPage} />
-                    <Route
-                        path="/products"
-                        component={() => (
-                            <ProductPage
-                                // ******* passing state in  productPage component as props ***
-                                furnituresArray={this.state.furnituresArray}
-                                selectValue={this.state.selectValue}
-                                selectFilter={this.selectFilter}
-                                getProducts={this.getProducts}
-                            />
-                        )}
-                    />
-                </main>
-                <Footer />
-            </Router>
-        );
-    }
+              )}
+            />
+            <Route
+              path="/login"
+              render={props => {
+                return (
+                  <LogIn
+                    {...props}
+                    onLoginSuccess={this.onLoginSuccess.bind(this)}
+                  />
+                );
+              }}
+            />
+
+            <Route
+              path="/logout"
+              render={props => {
+                return <LogOut onLogOut={this.logOut.bind(this)} />;
+              }}
+            />
+
+            {/* the sign up component takes an 'onSignUpSuccess' prop which will perform the same thing as onLoginSuccess: set the state to contain the currentUser */}
+            <Route
+              path="/signup"
+              render={props => {
+                return (
+                  <SignUp
+                    {...props}
+                    onSignUpSuccess={this.onLoginSuccess.bind(this)}
+                  />
+                );
+              }}
+            />
+
+            <Route
+              path="/"
+              render={() => {
+                return currentUser ? <Homepage /> : <Redirect to="/login" />;
+              }}
+            />
+          </main>
+          <Footer />
+        </Router>
+      </div>
+    );
+  }
 }
