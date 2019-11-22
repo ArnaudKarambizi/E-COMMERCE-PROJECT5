@@ -1,6 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose'); //you can use mongo db drive
-mongoose.set('useFindAndModify', false); //for put houses routes
+mongoose.set('useFindAndModify', false); //for put products routes
 // ────────────────────────────────────────────────────────────────────────────────
 //allows us to take requests and get data from the body when we send the post request
 // ────────────────────────────────────────────────────────────────────────────────
@@ -59,15 +59,15 @@ mongoose
 
 // ────────────────────────────────────────────────────────────────────────────────
 //use routes
-//any request that goes to /api/houses/* should refers to houses variable
-//any request that goes to /api/contact/* should refers to contact variable
+//any request that goes to /api/products/* should refer to products variable
+//any request that goes to /api/contact/* should refer to contact variable
 // ────────────────────────────────────────────────────────────────────────────────
 
 app.use('/products', products);
 
 // ────────────────────────────────────────────────────────────────────────────────
 // we need to be able to run our server
-//WE MAY NEED TO DEPLOY TO HEROKU OR PORT 5000
+//When deployed TO HEROKU OR PORT 5000
 // ────────────────────────────────────────────────────────────────────────────────
 
 const port = process.env.PORT || 5000;

@@ -27,14 +27,14 @@ router.get("/", (req, res) => {
 });
 
 // ────────────────────────────────────────────────────────────────────────────────
-//GET api/products/:id, GET a house
+//GET api/products/:id, GET a hproduct
 //we want to fetch products in the database
 // ────────────────────────────────────────────────────────────────────────────────
 
 router.get("/:id", (req, res) => {
   // req.params.id fetch the id from the uri
   Products.findById(req.params.id)
-    .then(house => res.json(house))
+    .then(Product=> res.json(Product))
     .catch(err => res.status(404).json({ success: false }));
 });
 
@@ -59,12 +59,12 @@ router.get("/productFilter/:query", (req, res) => {
 // ──────────────────────────────────────────────────────────
 
 // ────────────────────────────────────────────────────────────────────────────────
-// POST api/products CREATE  a house
+// POST api/products CREATE  a  product
 // we want to post products in the database
 // ────────────────────────────────────────────────────────────────────────────────
 
 router.post("/", (req, res) => {
-  // create new house from the Products model
+  // create new product from the Products model
   const {
     ProductName,
     Product_Description,
@@ -73,14 +73,14 @@ router.post("/", (req, res) => {
     Product_image
   } = req.body;
 
-  const newHouse = new Products({
+  const newProducts = new Products({
     ProductName,
     Product_Description,
     Product_Category,
     Price,
     Product_image
   });
-  newHouse.save().then(house => res.json(house));
+  newProduct.save().then(house => res.json(product));
 });
 
 // ────────────────────────────────────────────── III ──────────
@@ -88,7 +88,7 @@ router.post("/", (req, res) => {
 // ────────────────────────────────────────────────────────
 
 // ────────────────────────────────────────────────────────────────────────────────
-//  PUT api/products/:id, UPdate a house
+//  PUT api/products/:id, Update a product
 //we want to fetch products in the database
 // ────────────────────────────────────────────────────────────────────────────────
 router.put("/:id", (req, res) => {
@@ -105,7 +105,7 @@ router.put("/:id", (req, res) => {
     { new: true },
 
     // the callback function
-    (err, house) => {
+    (err, product) => {
       // Handle any possible database errors
       if (err) return res.status(500).send(err);
       return res.send(house);
@@ -118,7 +118,7 @@ router.put("/:id", (req, res) => {
 // ──────────────────────────────────────────────────────────────
 
 //===========================================
-// DELETE api/products/:id, DELETE a house
+// DELETE api/products/:id, DELETE a product
 //we want to fetch products in the database
 //===========================================
 router.delete("/", (req, res) => {
@@ -131,7 +131,7 @@ router.delete("/", (req, res) => {
 router.delete("/:id", (req, res) => {
   // req.params.id fetch the id from the uri
   Products.findById(req.params.id)
-    .then(house => house.remove().then(() => res.json({ success: true })))
+    .then(product => product.remove().then(() => res.json({ success: true })))
     .catch(err => res.status(404).json({ success: false }));
 });
 
