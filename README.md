@@ -1,16 +1,20 @@
 # REACT ECOMMERCE SITE
 
-Languages used to make the project.
+Technologies used to make the project.
 
 -   React.js
--   Node.js
+-   Node.js + Express + Mongoose
+-   JSON Web Token authentication
 
 npm packages used.
 
 -   helmet
 -   morgan
 -   express
+-   Mongoose
 -   concurrently
+-   bcrypt-nodejs
+-   jsonwebtoken
 
 ## Quick Start
 
@@ -26,18 +30,9 @@ npm install in main folder and in both client and server folders
 
 3. create a `.env` file at the root of the application, adjacent to `server.js`.
 
-  In the `.env` file,  declare  environment variables: `JWT_SECRET`, `mongoURI`. For example:
+  In the `.env` file,  declare  environment variables: `JWT_SECRET`, `mongoURI`. 
 
-   ```
-   JWT_SECRET=BOOOOOOOOOOOOOM
-   MONGODB_URI=mongodb://localhost/react-express-jwt
  
-
-
-
-
-
-
 ```sh
 $ npm install
 ```
