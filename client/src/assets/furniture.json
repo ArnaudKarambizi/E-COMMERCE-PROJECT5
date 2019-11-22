@@ -1,0 +1,101 @@
+{
+    "chairs": [
+        {
+            "id": 1,
+            "name": "Dining chairs",
+            "price": 83.99,
+            "description": "Mid Century Modern Style prefect for home and office use.Light weight Bend - resistant high quality back with Non - toxic HQ polypropylene  foreasy cleaning and Non - scratch plastic foot to protect the floor ",
+            "image": "https://images.unsplash.com/photo-1553882247-747e119f4850?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=934&q=80"
+        },
+
+        {
+            "id": 2,
+            "name": "Wooden stool",
+            "price": 19.99,
+            "description": "one backless seat stool offers an economical yet stylish seating option.Crafted from solid plantation rubberwood in sleek Natural finish.Wide, contoured top and sturdy square legs.",
+            "image": "https://images.unsplash.com/photo-1503602642458-232111445657?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=934&q=80"
+        },
+
+        {
+            "id": 3,
+            "name": "Guest chairs",
+            "price": 123.85,
+            "description": " Mobile guest chair with arms features an upholstered seat and back Unique, passive ergonomic frame has an independent seat and back flex This dynamic seating solution automatically responds to you to enhance comfort and continual support ",
+            "image": "https://images.unsplash.com/photo-1551298370-9d3d53740c72?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=934&q=80"
+        },
+
+        {
+            "id": 4,
+            "name": "Outdoor cafe chair",
+            "price": 36.95,
+            "description": "This chair is surprisingly lightweight and features a curved slat back and seat with integrated arms.Support braces under the seat add increased strength and stability.In fact,this sturdy chair will hold up to 400 pounds.Plastic floor glides protect your floor by sliding smoothly when you need to move thechair.",
+            "image": "https://5.imimg.com/data5/UE/QR/MY-9707290/wooden-cafe-chairs-500x500.jpg"
+        }
+    ],
+
+    "sofas": [
+        {
+            "id": 5,
+            "name": "Rattan sofa",
+            "price": 699.0,
+            "description": "Designed to meet the demand of low cost but durable and efficient furniture,this compact sofa fit even smaller spaces while still providing plenty of room for two people to sit comfortably.The classNameic color design blends well with most of the home decor.",
+            "image": "https://images-na.ssl-images-amazon.com/images/I/81JQXfK8EyL._SL1500_.jpg"
+        },
+
+        {
+            "id": 6,
+            "name": "Vintage Loveseat",
+            "price": 187.99,
+            "description": "Designed to meet the demand of low cost but durable and efficient furniture,this compact sofa fits even smaller spaces while still providing plenty of room for two people to sit comfortably.The classNameic color design blends well with most of the home decor.",
+            "image": "https://images-na.ssl-images-amazon.com/images/I/71r-c8bgrcL._SL1500_.jpg"
+        },
+
+        {
+            "id": 7,
+            "name": "bridge water sofa",
+            "price": 229.99,
+            "description": "  Perfect for apartments, dorms and whatever you want with limited square footage.The soft linen - look fabric upholstery brings a refined look to any room. With soft arm and refined straight back cushion.",
+            "image": "https://images-na.ssl-images-amazon.com/images/I/81kwQWCWbPL._SL1500_.jpg"
+        },
+
+        {
+            "id": 8,
+            "name": "Granada sofa",
+            "price": 449.99,
+            "description": " Transitionally designed sofa features track arms with a button tufted back and two 18”throw pillows.Tapered wooden legs with a dark espresso finish.Innovative engineering and design enables this sofa to fit through a 10” opening and easily be assembled in the actual room. ",
+            "image": "https://images-na.ssl-images-amazon.com/images/I/91hoVT4OsPL._SL1500_.jpg"
+        }
+    ],
+
+    "tables": [
+        {
+            "id": 9,
+            "name": "Computer table",
+            "price": 87.36,
+            "description": "This Solid Wood Folding Card Table come with a classNameic Straight edge.It is the perfect table for games and extra seating for the holidays.",
+            "image": "https://images-na.ssl-images-amazon.com/images/I/61a3C-FqJnL._SL1500_.jpg"
+        },
+
+        {
+            "id": 10,
+            "name": "card table",
+            "price": 85.12,
+            "description": "This Solid Wood Folding Card Table come with a classNameic Straight edge.It is the perfect table for games and extra seating for the holidays.",
+            "image": "https://images-na.ssl-images-amazon.com/images/I/81L%2BRchk6OL._SL1500_.jpg"
+        },
+        {
+            "id": 11,
+            "name": "Newport desk",
+            "price": 119.04,
+            "description": " In a beautiful Espresso wood grain finish and modern design the Newport Desk with Drawer is sure to be an eye catcher.Featuring a spacious desktop and drawer for additional storage.",
+            "image": "https://images-na.ssl-images-amazon.com/images/I/61p5fAoyWKL._SL1024_.jpg"
+        },
+        {
+            "id": 12,
+            "name": "Axess desk",
+            "price": 99.99,
+            "description": "The axess desk is perfect for all your storage needs!Its compact design includes all the space you need for a well - organized workspace thanks to its open and closed storage spaces.",
+            " image ": "https://images-na.ssl-images-amazon.com/images/I/61p5fAoyWKL._SL1024_.jpg"
+        }
+    ]
+}
