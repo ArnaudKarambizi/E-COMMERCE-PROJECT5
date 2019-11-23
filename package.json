@@ -1,28 +1,28 @@
 {
-    "name": "e-commerce-project5",
+    "name": "ecommerceproject5",
     "version": "1.0.0",
-    "description": "Languages used to make the project.",
-    "main": "index.js",
+    "description": "E-commerce projet5",
+    "main": "server.js",
+    
     "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1",
+        "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
+        "start:prod": "node server.js",
+        "start:dev": "concurrently \"nodemon --ignore 'client/*'\" \"npm run client\"",
+        "client": "cd client && npm run start",
         "install": "cd client && npm install",
         "build": "cd client && npm run build",
-        "client": "npm start --prefix client",
-        "server": "npm start --prefix server",
-        "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
-        "dev": "concurrently \"npm start --prefix server\" \"npm start --prefix client\"",
-        "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
-    },
+        "heroku-postbuild": "npm run build"
+      },
+
     "repository": {
         "type": "git",
         "url": "git+https://github.com/ArnaudKarambizi/E-COMMERCE-PROJECT5.git"
     },
+
     "author": "Arnaud Karambizi",
     "license": "MIT",
-    "bugs": {
-        "url": "https://github.com/ArnaudKarambizi/E-COMMERCE-PROJECT5/issues"
-    },
-    "homepage": "https://github.com/ArnaudKarambizi/E-COMMERCE_PROJECT5#readme",
+    
+  
     "dependencies": {
         "bcrypt-nodejs": "0.0.3",
         "dotenv": "^8.2.0",

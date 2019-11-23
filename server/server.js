@@ -74,9 +74,9 @@ app.get("/api", (req, res) => {
 
 app.use("/api/users", usersRoutes);
 
-app.use("*", (req, res) => {
-  res.sendFile(`${__dirname}/client/build/index.html`);
-});
+// app.use("*", (req, res) => {
+//   res.sendFile(`${__dirname}/client/build/index.html`);
+// });
 // ────────────────────────────────────────────────────────────────────────────────
 // we need to be able to run our server
 //When deployed TO HEROKU OR PORT 5000
@@ -88,7 +88,7 @@ if (process.env.NODE_ENV === 'production') {
   app.use(express.static('../client/build'));
 
   app.get('*', (req, res) => {
-    res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
+    res.sendFile(`../client/build/index.html`);
   });
 }
 
