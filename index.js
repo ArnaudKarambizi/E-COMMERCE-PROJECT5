@@ -42,7 +42,7 @@ app.use(
 // ────────────────────────────────────────────────────────────────────────────────
 
 // const db = require('./config/keys').mongoURI;
-const mongoUrl = require("./server/config/keys").mongoURI;
+const mongoUrl = require("./config/keys").mongoURI;
 // ────────────────────────────────────────────────────────────────────────────────
 // connect to mongo db we use mongoose and use pass in the db object
 //it is promise once it connects what do we want to do

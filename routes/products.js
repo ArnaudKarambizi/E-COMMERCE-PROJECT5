@@ -6,7 +6,7 @@ const express = require("express");
 const router = express.Router();
 
 //Products model we need it to make querries,save ,find etc..
-const Products = require("../models/Products");
+const Products = require("../models/products");
 
 // '/' is  api/products   because we have already used /routes/api/products in server
 
