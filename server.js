@@ -20,7 +20,7 @@ const products = require("./routes/products");
 // ────────────────────────────────────────────────────────────────────────────────
 
 const app = express();
-app.get("/", (req, res) => res.send("hello"));
+// app.get("/", (req, res) => res.send("hello"));
 
 // ────────────────────────────────────────────────────────────────────────────────
 //body parse has a middleware and we pass
