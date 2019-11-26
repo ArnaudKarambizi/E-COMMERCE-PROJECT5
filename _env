@@ -1,4 +1,0 @@
-MYPASSWORD='Kayitare94$',
-SECRET=JWT_theSecret,
- mongoURI= "mongodb+srv://Arnaud_13:Kayitare94@ecommerceproducts-mvd1c.mongodb.net/test?retryWrites=true&w=majority"
- 
