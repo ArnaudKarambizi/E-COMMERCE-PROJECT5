@@ -6,12 +6,11 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import ContactPage from "./components/ContactPage/ContactPage";
 import ProductPage from "./components/ProductPage/ProductPage";
-import { BrowserRouter as Router, Route,Redirect } from "react-router-dom";
+import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
 import LogOut from "./components/LogOut";
 import LogIn from "./components/LogIn";
 import SignUp from "./components/SignUp";
-import httpClient from './components/httpClient'
-
+import httpClient from "./components/httpClient";
 
 export default class App extends Component {
   /* Initializing state  with an empty furnitures array 
@@ -87,7 +86,6 @@ export default class App extends Component {
     const { currentUser } = this.state;
     return (
       <div>
-
         <Router>
           <Header
             onSubmit={this.onSubmit}
@@ -95,20 +93,30 @@ export default class App extends Component {
             currentUser={currentUser}
           />
           <main className="main">
-            <Route path="/" exact component={Homepage} />
-            <Route path="/contact" component={ContactPage} />
+            <Route
+              path="/contact"
+              render={() => {
+                return currentUser ? <ContactPage /> : <Redirect to="/login" />;
+              }}
+            />
+
             <Route
               path="/products"
-              component={() => (
-                <ProductPage
-                  // ******* passing state in  productPage component as props ***
-                  furnituresArray={this.state.furnituresArray}
-                  selectValue={this.state.selectValue}
-                  selectFilter={this.selectFilter}
-                  getProducts={this.getProducts}
-                />
-              )}
+              render={() => {
+                return currentUser ? (
+                  <ProductPage
+                    // ******* passing state in  productPage component as props ***
+                    furnituresArray={this.state.furnituresArray}
+                    selectValue={this.state.selectValue}
+                    selectFilter={this.selectFilter}
+                    getProducts={this.getProducts}
+                  />
+                ) : (
+                  <Redirect to="/login" />
+                );
+              }}
             />
+
             <Route
               path="/login"
               render={props => {
@@ -143,6 +151,7 @@ export default class App extends Component {
 
             <Route
               path="/"
+              exact
               render={() => {
                 return currentUser ? <Homepage /> : <Redirect to="/login" />;
               }}
