@@ -73,7 +73,7 @@ app.get("/api", (req, res) => {
 });
 
 app.use("/api/users", usersRoutes);
-app.use('/products', products);
+app.use('/api/products', products);
 
 
 // app.use("*", (req, res) => {

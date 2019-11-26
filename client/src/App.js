@@ -31,7 +31,7 @@ export default class App extends Component {
   }
 
   getProducts = () => {
-    fetch(`/products`)
+    fetch(`/api/products`)
       .then(response => {
         return response.json();
       })
@@ -59,7 +59,7 @@ export default class App extends Component {
 
   onSubmit = e => {
     e.preventDefault();
-    let filterLink = `products/productFilter/${this.state.inputValue}`;
+    let filterLink = `/api/products/productFilter/${this.state.inputValue}`;
     fetch(filterLink)
       .then(response => {
         return response.json();
